@@ -1,0 +1,1469 @@
+/* ----------------------
+-------------------------
+
+CSS TABLE OF CONTENTS
+
+# GLOBAL STYLES
+    # GLOBAL VARIABLES
+    # GLOBAL RESET
+    # GLOBAL COLORS
+    # GLOBAL TYPOGRAPHY
+    # GLOBAL MEDIA
+    # GLOBAL HELPERS
+
+# LAYOUT
+    # MEDIA QUERIES / BREAKPOINTS (RESPONSIVE TYPOGRAPHY)
+    # CONTAINER
+    # GRID
+
+# SITE STRUCTURE
+    # HEADER
+        # LOGO
+        # SITE NAV
+            # TOGGLE MENU
+                # NAVICON / HAMBURGER
+        # SITE-HEADER-ON-TOP-OF-HERO
+    # MAIN
+        # SECTIONS
+            # HERO
+    # FOOTER
+
+# UI COMPONENTS
+    # BUTTONS
+
+# ANIMATION
+    # SMOOTH SCROLLING
+
+# CUSTOM STYLING
+
+-------------------------
+---------------------- */
+
+/* ----------------------------------------------- */
+/* GLOBAL STYLES  */
+/* ----------------------------------------------- */
+
+/* GLOBAL VARIABLES
+ * Definitions for commonly used colors, typeface, sizing-units.
+/* -----------------------------------------------  */
+
+@font-face {
+    font-family: 'ppeditorial-old-thin';
+    src: url('../fonts/PPEditorialOld-Thin.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ppeditorial-old-thinitalic';
+    src: url('../fonts/PPEditorialOld-ThinItalic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'ppeditorial-old-regular';
+    src: url('../fonts/PPEditorialOld-Regular.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ppeditorial-old-italic';
+    src: url('../fonts/PPEditorialOld-Italic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ppeditorial-old-bold';
+    src: url('../fonts/PPEditorialOld-Bold.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'ppeditorial-old-bolditalic';
+    src: url('../fonts/PPEditorialOld-BoldItalic.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* <weight>: Use a value from 200 to 800
+<uniquifier>: Use a unique and descriptive class name
+*/
+.karla-variable {
+  font-family: 'Karla', sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+} 
+
+:root {
+
+    /* DEFINE ALL COMMONLY USED COLORS HERE */
+    --color-black: rgb(25 25 25 / .85);
+    --color-white: rgb(245 245 238 / 1);
+    --color-white85: rgb(245 245 238 / .85);
+    --color-yellow: rgb(255 238 0 /1);
+    --color-blue: rgb(0 17 255 /1);
+    /* blue:#0011ff yellow:#FFEE00; */
+
+
+    /* Dark mode */
+    --color-body-bg: rgb(25 25 25 / 1);
+    --color-a: rgb(255 255 255 / 1);
+    --color-a-hover: var(--color-yellow);
+    --color-siteheader-a: var(--color-white);
+    --color-siteheader-a-hover: var(--color-yellow);
+    --color-footer-bg: var(--color-white);
+    --color-footer-text: var(--color-black);
+    --color-footer-a: rgb(0 0 0 /1);
+    --color-footer-a-hover: var(--color-blue);
+    --color-text: var(--color-white85);
+
+    /* Light mode */
+    /* 
+    --color-body-bg: rgb(245 245 238 / 1);
+    --color-a: rgb(0 0 0 / 1);
+    --color-a-hover: var(--color-blue);
+    --color-siteheader-a: var(--color-black);
+    --color-siteheader-a-hover: var(--color-blue);
+    --color-footer-bg: rgb(0 0 0 /1);
+    --color-footer-text: rgb(255 255 255 /.8);
+    --color-footer-a: rgb(255 255 255 /1);
+    --color-footer-a-hover: var(--color-yellow);
+    --color-text: var(--color-black);
+     */
+
+    --color-siteheader-bg: transparent;
+
+    /* --color-text-headings-onlight: var(--color-black); */
+
+
+    /*  DEFINE ALL FONTS USED HERE */
+    --font-serif-bold: 'ppeditorial-old-bold', 'Georgia', serif;
+    --font-serif-bolditalic: 'ppeditorial-old-bolditalic', 'Georgia', serif;
+    --font-serif-regular: 'ppeditorial-old-regular', 'Georgia', serif;
+    --font-serif-regularitalic: 'ppeditorial-old-italic', 'Georgia', serif;
+    --font-serif-thin: 'ppeditorial-old-thin', 'Georgia', serif;
+    --font-serif-thinitalic: 'ppeditorial-old-thinitalic', 'Georgia', serif;
+    --font-body: "Karla", system-ui, "Helvetica", "Arial";
+
+    /* SIZING UNITS */
+    /* --container-width: 1200px; */
+    --container-width: 80vw;
+    --unit-small: 1em;
+    --unit-medium: 2em;
+    --unit-large: 4em;
+
+}
+
+/* GLOBAL RESET */
+
+/* CHANGE BOX-SIZING FOR ALL TO BORDER-BOX */
+* { box-sizing: border-box; }
+
+/* REMOVE THE DEFAULT 8px MARGIN ON THE BODY */
+body { margin: 0; }
+
+
+/* GLOBAL COLORS */
+body {
+
+    /* SET THE COLOR OF THE MAIN BODY BACKGROUND */
+    background-color: var(--color-body-bg);
+
+    /* SET THE COLOR OF THE MAIN BODY TEXT */
+    color: var(--color-text);
+}
+
+h1, h2, h3 {
+
+    /* SET THE COLOR OF ALL HEADINGS H1-etc */
+    color: var(--color-text);
+}
+
+a {
+    /* SET THE COLOR OF ALL TEXT LINKS */
+    color: var(--color-a);
+    text-decoration: none;
+    font-weight: 450;
+
+    /* SET THE COLOR OF ALL HOVER STATES ON TEXT LINKS */
+    &:hover {
+        color: var(--color-a-hover);
+    }
+}
+
+/* GLOBAL TYPOGRAPHY */
+body {
+
+    /* SET THE FONT FOR ALL MAIN BODY TEXT */
+    /* font-family: var(--font-body); */
+
+    /* SET THE LEADING (LINE-HEIGHT) FOR ALL BODY TEXT */
+    line-height: 1.4;
+}
+
+/* SET THE FONT & MARGIN FOR ALL HEADINGS */
+h1, h2, h3 {
+    font-family: var(--font-serif-bold);
+    margin: .4em 0;
+}
+
+h3 {
+    font-family: var(--font-serif-regular);
+    margin: .4em 0;
+}
+
+h1 {
+    font-size: 3em;
+    line-height: 1.1;
+}
+
+h2 {
+    font-size: 2em;
+    line-height: 1.2;
+}
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.3;
+}
+
+h4 {
+    font-size: 1.25em;
+    line-height: 1.2;
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+dl {
+    /* border: 2px solid red; */
+    margin: 0;
+    padding: 0;
+}
+
+dt {
+    /* font-family: var(--font-body); */
+    /* font-weight: 600; */
+    font-family: var(--font-serif-regular);
+    font-feature-settings: "dlig" 1;
+}
+
+dd {
+    /* border: 2px solid red; */
+    font-family: var(--font-body); 
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+p {
+    /* LIMIT THE WIDTH OF ALL PARAGRAPHS */
+    max-width: 66ch;
+
+    /* NEW SCHOOL WIDOW SLAYER */
+    text-wrap: pretty;
+
+}
+
+blockquote {
+    margin: .5em 0 .25em 0;
+    padding: 0;
+    font-family: var(--font-serif-regularitalic);
+    font-size: 1.5em;
+    line-height: 1.2;
+    font-feature-settings: "dlig" 1;
+
+}
+
+figcaption {
+    font-weight: 200;
+    /* font-size: 75%; */
+    margin: 1em 0;
+}
+
+/* GLOBAL MEDIA */
+
+/* MAKE ALL IMAGES SHRINK ON SMALL SCREENS */
+
+/* QUESTION: is video 100%??? */
+img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/* GLOBAL HELPERS */
+
+/* HIDE ELEMENTS VISUALLY BUT NOT FROM SCREEN READERS AND SEARCH ENGINES */
+.hide-visually {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+}
+
+@media (max-width: 767px) {
+    .hide-visually-smallonly {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+}
+
+/* Align left/right/center */
+.align-right {
+    text-align: right;
+}
+
+/* QUESTION: why is this padding not working? */
+@media (max-width: 767px) {
+
+    .with-padding-top {
+        border: 2px solid red;
+        padding-top: 4em;
+    }
+    
+}
+
+/* ------------------- */
+/* -----  LAYOUT ----- */
+/* ------------------- */
+
+/* RESPONSIVE TYPOGRAPHY VIA MEDIA QUERIES */
+
+/* SMALL SCREENS (Mobile , 767px) */
+body {
+    /* Set the default font size */
+    font-size: 87.5%; 
+}
+
+/* MEDIUM SCREENS ( Tablets < 1200px ) */
+@media (min-width: 768px) {
+    body {
+        /* Set the medium screens and higher font size to 16px */
+        font-size: 100%; 
+    }
+}
+
+/* LARGE SCREENS ( Laptops & Desktop > 1200px ) */
+
+@media (min-width: 1200px) {
+    body {
+        /* Set the medium screens and higher font size to 16px */
+        /* font-size: 112.5%;  */
+        font-size: 100%; 
+    }
+}
+
+/* CONTAINER */
+.container {
+    /* SET THE MAX WIDTH OF YOUR SITE (eg 1200px) */
+    max-width: var(--container-width);
+
+    /* CENTER THE CONTAINER HORIZONTALLY*/
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* GRID */
+.row {
+    --gridgap: 2em;
+}
+
+/* - All the children under row */
+.row > * {
+
+    /* - Setting bttom margin for each fraction */
+    margin-top: var(--gridgap);
+    margin-bottom: var(--gridgap);
+}
+
+@media (min-width: 768px) {
+
+    .row {
+        /* - Create grid in 12 columns, with equal fractions */
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        gap: var(--gridgap);
+    }
+
+    /* COMMONLY USED SEMANTIC COLUMN WIDTHS
+       - Setting size for each grid */
+    .one-half { grid-column: auto / span 6; }
+    .one-third { grid-column: auto / span 4; }
+    .two-thirds { grid-column: auto / span 8; }
+    .one-fourth { grid-column: auto / span 3; }
+    .three-fourths { grid-column: auto / span 9; }
+
+    /* - 12 Column Classes */
+    .col-1 {grid-column: auto / span 1; }
+    .col-2 {grid-column: auto / span 2; }
+    .col-3 {grid-column: auto / span 3; }
+    .col-4 {grid-column: auto / span 4; }
+    .col-5 {grid-column: auto / span 5; }
+    .col-6 {grid-column: auto / span 6; }
+    .col-7 {grid-column: auto / span 7; }
+    .col-8 {grid-column: auto / span 8; }
+    .col-9 {grid-column: auto / span 9; }
+    .col-10 {grid-column: auto / span 10; }
+    .col-11 {grid-column: auto / span 11; }
+    .col-12 {grid-column: auto / span 12; }
+
+    /*  - Centered columns */
+    .one-half.centered {grid-column: 4 / span 6; }
+    .one-third.centered {grid-column: 5 / span 4; } 
+    .two-thirds.centered {grid-column: 3 / span 8; } 
+
+    /* - Pushes */
+    .push-1 { grid-column-start: 2; }
+    .push-2 { grid-column-start: 3; }
+    .push-3 { grid-column-start: 4; }
+    .push-4 { grid-column-start: 5; }
+    .push-5 { grid-column-start: 6; }
+    .push-6 { grid-column-start: 7; }
+    .push-7 { grid-column-start: 8; }
+    .push-8 { grid-column-start: 9; }
+    .push-9 { grid-column-start: 10; }
+    .push-10 { grid-column-start: 11; }
+    .push-11 { grid-column-start: 12; }
+
+    /* SWAP (REVERSE) COLUMNS - WORKS ONLY w/ 2 CHILDREN  */
+    .row.swapped > *:first-child { order: 2; }
+    .row.swapped > *:last-child { order: 1; }
+
+}
+
+/* FOR DEMO PURPOSES */
+.demo > * {
+    background-color: #444;
+    padding: 1em;;
+    text-align: center;
+}
+
+/* ------------------- */
+/* -  SITE STRUCTURE - */
+/* ------------------- */
+
+/* SITE HEADER */
+.site-header {
+    background-color: var(--color-siteheader-bg);
+    /* border: 1px solid  red; */
+    
+    /* PUT ALL HEADER CHILDREN SIDE-BY-SIDE AND VERT CENTERED */
+    /* @media (min-width: 768px) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    
+    } */
+
+    /* ADD SOME GENERAL SPACING AROUND THE HEADER */
+    /* padding: var(--unit-medium); */
+    padding: var(--unit-small) 0;
+
+   /* REMOVE LINK UNDERLINES */
+    a {
+        text-decoration: none;
+    }
+    
+    /* SITE LOGO */
+    .site-logo {
+
+        /* PUT SITE LOGO CHILDREN SIDE-BY-SIDE AND CENTER */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1em;
+
+        /* REMOVE MARGINS AND RESIZE H1 INSIDE HEADER */
+        h1 {
+            font-size: 2em;
+            margin: 0;
+            text-wrap: nowrap;
+        }
+
+        /* REMOVE THE SPACE UDER THE LOGO MARK */
+        img, svg {
+            display: block;
+        }
+
+    }
+
+    /* SITE-HEADER-NAV */
+    .site-header-nav {
+        ul {
+            /* REMOVE MARGINS & BULLETS FROM LIST */
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* MAKE SITE NAV LINKS BIG LIKE BUTTONS */
+        a {
+            display: block;
+            padding: 1em;
+        }
+
+    }
+
+}
+
+/* TOGGLE MENU */
+
+/*HIDE MENU BUTTON IF NOT USING TOGGLE MENU  */
+.site-menu-button {
+    display: none;
+}
+
+.toggle-menu {
+
+    --color-togglemenu-bg: black;
+    --color-togglemenu-text: white;
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+
+    /* SHOW MENU BUTTON IF USING TOGGLE NAV */
+    .site-menu-button {
+        display: block;
+        background-color: transparent;
+        border: 1px solid var(--color-siteheader-a);
+        color: var(--color-siteheader-a);
+        padding: .5em;
+        position: relative;
+        z-index: 100;
+        transition: .4s all ease-out;
+
+        /* RESET THE FONT SIZE */
+        font-size: inherit;
+
+        &:hover {
+            cursor: pointer;
+        }
+
+        /* ADD SUPPORT FOR NAVICON/HAMBURGER ICON */
+        &:has(svg) {
+
+            /* VERTICALLY ALIGN THE MENU TEXT W ICON */
+            display: flex;
+            align-content: center;
+            gap: var(--unit-small);
+
+            /* REMOVE BORDER */
+            border: none;
+            
+            /* SET TSVG COLOR */
+            svg {
+                fill: var(--color-siteheader-a);
+            }
+
+            /* ADD SUPPORT FOR SVG ANIMATION (">" MEANS "IMEDIATE CHILD") */
+            svg > * {
+                transition: .2s all ease-out;
+                transform-origin: center;
+            }
+
+        }
+    }
+
+    .site-menu {
+        /* SET COLOR TO TOGGLE MENU */
+        background-color: var(--color-togglemenu-bg);
+        color: var(--color-togglemenu-text);
+
+        position: fixed;
+        top: 0;
+        right: 0; 
+        z-index: 50;
+        width: 100%;
+        min-height: 100svh;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 3vw;
+        transition: .4s all ease-out;
+
+        a {
+            color: var(--color-togglemenu-text);
+            padding: 2vh 2vw;
+        }
+
+    }
+
+    &[data-menustate="open"] {
+
+        /* CHANGE COLOR TO TOGGLE MENU COLORS */
+        --color-siteheader-a: var(--color-togglemenu-text);
+
+        /* SET MENU BUTTON TO FIXED WHEN MENU IS OPEN */
+        .site-menu-button {
+            position: fixed;
+            z-index: 100;
+        }
+
+        /* SHOW THE SITE MENU WHEN OPEN */
+        .site-menu {
+            transform: translateX(0);
+        }
+
+        /* ANIMATE THE NAVICON / HAMBURGER TO AN X */
+        .site-menu-button svg {
+
+            .simple-navicon-top {
+                /* transform: rotate(45deg); */
+                rotate: 45deg;
+                translate: -21% 25%;
+            }
+
+            .simple-navicon-middle {
+                opacity: 0;
+            }
+
+            .simple-navicon-bottom {
+                rotate: -45deg;
+                translate: -21% -25%;
+            }
+
+        }
+
+    }
+
+    &[data-menustate="closed"] {
+
+        /* MOVE THE SIDE MENU TO THE RIGHT WHEN CLOSED */
+        .site-menu {
+            transform: translateX(100%);
+        }
+    }
+
+    /* IF TOGGLE MENU DISPLAY LOGO LEFT AND MENU RIGHT ON ALL SCREENS */
+    .site-header:has(.toggle-menu) {
+
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* PLACE SITE LOGO ON TOP OF DRAWER MENU */
+    .site-logo {
+    /* NOTE: LOGO WILL SCROLL AWAY - NEED TO ADD SUPPORT FOR FIXED */
+    /* position: relative; */
+    z-index: 100;
+    }
+}
+
+/* SITE MAIN */
+.site-main {
+    background-color: var(--color-body-bg);
+    position: relative;
+    z-index: 20;
+    border-bottom-left-radius: 32px;
+    border-bottom-right-radius: 32px;
+    margin-bottom: -32px;
+    overflow: clip;
+}
+
+/* SECTIONS */
+section {
+    padding: var(--unit-large) var(--unit-medium);
+}
+
+/* HERO SECTION */
+.hero {
+    background-color: var(--color-hero-bg);
+    color: var(--color-hero-text);
+    display: block;
+    place-items: center;
+
+    /* ADD MORE SPACE ON TOP FOR THE ABSOLUTE HEADER */
+    padding-top: calc(4em + var(--unit-large));
+
+    h1 {
+        font-size: 4em;
+        line-height: 1;
+        text-wrap: balance;
+    }
+
+    h1, h2, h3 {
+        color: var(--color-hero-headings);
+    }
+}
+
+/* SITE FOOTER */
+
+/* Links in class=reveal requires to be z-index:positive. 
+   This also goes with the visibility:hidden in the viewstate for "observe-me." 
+   "Observe-me" in the markup give access to controling the animation and visibility for hero image
+*/
+.site-footer.reveal {
+    position: sticky;
+    bottom: 0;
+    z-index: 10;
+}
+
+.site-footer {
+    border-bottom: 8px solid var(--color-yellow);
+    background-color: var(--color-footer-bg);
+    color: var(--color-footer-text);
+    padding: calc( var(--unit-large) + 5% ) var(--unit-large);
+    height: 70vh;
+    z-index: 10;
+
+    .on-hover {
+        border: 2px solid red;
+        opacity: 0;
+    }
+
+    /* QUESTION: How can I display an icon on-hover???  */
+
+    .social-links a:hover {
+        font-family: var(--font-serif-thinitalic);
+    }
+    
+    .social-links a:hover::after {
+        display: inline-block;
+    }
+    
+    .social-links a::after{
+        /* content: "";
+        background-image: url(../img/icon-newwindow.svg);
+        background-size: contain;
+        width: 1em;
+        height: 1em;
+        display: none; */
+
+        display: none;
+        content: "";
+        width: .8em;
+        height: .8em;
+        margin-left: 0.4em;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='blue' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5z'/%3E%3Cpath fill-rule='evenodd' d='M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0v-5z'/%3E%3C/svg%3E");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    h2, h3 {
+        color: var(--color-footer-headings);
+        font-feature-settings: "dlig" 1;
+        font-weight: normal;
+        /* text-transform: uppercase; */
+    }
+
+    h2 {
+        font-family: var(--font-serif-regular);
+        font-size: 4vw;
+    }
+
+    h3 {
+        font-family: var(--font-serif-regularitalic);
+        font-size: 1.25em;
+    }
+
+    h3 ul {
+        font-family: var(--font-serif-thin);
+        list-style: none;
+    }
+
+    h3 ul li {
+        margin: .25em;
+    }
+
+    a{
+        color: var(--color-footer-a);
+        
+        &:hover {
+            color: var(--color-footer-a-hover);
+        }
+    }
+
+}
+
+/* SITE NAV */ 
+.site-nav {
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    /* margin: 0 auto;
+    width: 1200px; */
+}
+
+.site-nav ul {
+    /* width: 100%; */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-nav a {
+    padding: .5em 1em;
+    text-decoration: none;   
+}
+
+
+
+/* -------------------- */
+/* --  UI COMPONENTS -- */
+/* -------------------- */
+
+.a-button {
+    /* SET THE BUTTON COLORS */
+    background-color: var(--color-body-bg);
+    border: 2px solid var(--color-white);
+    border-radius: 4px;
+    color: var(--color-a);
+
+    /* ENABLE BOX MODEL STYLING */
+    display: inline-block;
+    padding: 0.25em 1em;
+    margin: var(--unit-small) 0;
+
+    /* GET RID OF THE UNDERLINE */
+    text-decoration: none;
+
+    + .button {
+        margin-left: var(--unit-small);
+    }
+
+    &:hover {
+        color: var(--color-a-hover);
+        background-color: var(--color-blue);
+        border-color: var(--color-blue);
+
+    }
+
+    /* LIGHT BUTTON VARIANT */
+    /* &.light {
+        border-color: var(--color-a-light);
+        background-color: var(--color-a-light);
+        color: var(--color-a-darker);
+
+        &:hover {
+            border-color: var(--color-a-lighter);
+            background-color: var(--color-a-lighter);
+        }
+    } */
+
+}
+
+
+/* -------------------- */
+/* --    ANIMATION   -- */
+/* -------------------- */
+
+/* ADD SUPPORT FOR SMOOTH SCROLLING */
+html {
+    scroll-behavior: smooth;
+}
+
+/* [data-page-loaded="not-loaded"] .hero .observe-me {
+    transition-delay: 3s;
+} */
+
+
+/* SCROLL TRIGGERED ANIMATION
+ * corresponding with JS
+ */
+.observe-me.fade-in {
+    opacity: 0;
+    transition: all .75s ease-out 0.5s;
+
+    &[data-viewstate="active"] {
+        opacity: 1;
+    }
+}
+
+.animate-from-top {
+    translate: 0 -100px;
+
+    &[data-viewstate="active"] {
+        translate: 0 0;
+    }
+}
+
+.animate-from-right {
+    translate: 20px 0;
+    transition-delay: .25s;
+
+    &[data-viewstate="active"] {
+        translate: 0 0;
+    }
+}
+
+.animate-from-left {
+    translate: -20px 0;
+    transition-delay: .5s;
+
+    &[data-viewstate="active"] {
+        translate: 0 0;
+    }
+}
+
+.animate-from-bottom {
+    translate: 0 20px;
+    transition-delay: .5s;
+
+    &[data-viewstate="active"] {
+        translate: 0 0;
+    }
+}
+
+.slide-up {
+    translate: 0 200px;
+    transition-delay: .5s;
+
+    &[data-viewstate="active"] {
+        translate: 0 0;
+    }
+}
+
+/* QUESTION: how can I make this scaling up more visible? */
+.observe-me.scale-up {
+    scale: 0;
+    transition: all 3s ease-out 0.5s;
+
+    &[data-viewstate="active"] {
+        scale: 100%;
+    }
+
+}
+
+/* -------------------- */
+/* -- CUSTOM STYLING -- */
+/* -------------------- */
+
+/* CUSTOM STYLING FOR HOME */
+
+.frame {
+    border-radius: 32px;
+    padding: 8svh 8vw;
+    color: var(--color-black);
+}
+
+.frame-alt {
+    border-radius: 32px;
+    padding: 8svh 8vw;
+    border: 2px solid var(--color-yellow);
+}
+
+.frame .row,
+.frame-alt .row {
+    margin: 0;
+    padding: 0 0 5svh 0;
+}
+
+.frame .row .one-half {
+    margin: 0;
+    padding: 0;
+}
+
+.hero-home .frame .eyebrow {
+    font-family: var(--font-body);
+    font-size: 1.5vw;
+    line-height: 1.2;
+    font-weight: 300;
+    text-transform: uppercase;
+    margin: 1em 0 0.5em 0;
+}
+
+.hero-home .frame h2 {
+    color: var(--color-black);
+    margin: 0;
+    padding: 0;
+    font-size: 6.5vw;
+    line-height: 1;
+    text-transform: uppercase;
+    font-feature-settings: "dlig" 1;
+}
+
+.hero-home .frame h2 span {
+    text-transform: none;
+    font-weight: normal;
+    font-family: var(--font-serif-bolditalic);
+}
+
+.hero-home .frame p {
+    font-size: 1.5vw;
+    line-height: 1.9vw;
+    margin-top: 0;
+    margin-bottom: 1.2vw;
+    padding: 0;
+    /* margin-top: 0.9vw; */
+}
+
+.hero-home .frame a {
+    color: var(--color-a);
+
+    &:hover {
+        color: var(--color-blue);
+    }
+}
+
+.hero-home .frame h3 {
+    margin: 0;
+    padding: 0;
+    font-family: var(--font-serif-regularitalic);
+    font-size: 2vw;
+    line-height: 1.2;
+    font-feature-settings: "dlig" 1;
+    /* color: var(--color-white); */
+}
+
+.load-expand {
+    position: relative;
+    background-color: transparent;
+    border: none;
+}
+
+.load-expand::after {
+    content: "";
+    position: absolute;
+    z-index: 100;
+    top: 50%;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    translate: 0 -50%;
+    background-color: var(--color-yellow);
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    /* padding: 0; */
+    margin-inline: auto;
+    interpolate-size: allow-keywords;
+    animation: load-expand 1s ease-out forwards; 
+}
+
+.load-expand > * {
+    opacity: 0;
+    position: relative;
+    z-index: 200;
+    /* display: none; */
+    /* scale: 0; */
+    animation: load-expand-content 1s ease-out forwards; 
+}
+
+@keyframes load-expand {
+
+    0% {
+        width: 10px;
+        height: 10px;
+        /* scale: 0; */
+        border-radius: 100%;
+        /* padding: 0; */
+        /* margin-inline: auto; */
+    }
+
+    20% {
+        width: 200px;
+        height: 200px;
+        /* scale: 1; */
+        border-radius: 100%;
+        /* padding: 0; */
+    }
+
+    100% {
+        width: 100%;
+        height: 100%;
+        border-radius: 32px;
+        /* padding: 0; */
+        /* margin-inline: auto; */
+    }
+}
+
+@keyframes load-expand-content {
+
+    0% {
+        opacity: 0;
+    }
+
+
+    99% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Headings for each section in home page */
+#sandboxes h2,
+#about h2 {
+    /* text-transform: uppercase; */
+    font-feature-settings: "dlig" 1;
+    text-align: center;
+    font-size: 6em;
+    margin: 10vw auto;
+    padding: 10vw auto;
+}
+
+#sandboxes h2 {
+    z-index: -10;
+}
+
+/* Sandboxes bespoke grid */
+.sandboxes-wrapper {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+}
+
+/* Sandboxes bespoke layout using the above grid */
+.sandboxes-wrapper > *:nth-child(1) {
+    grid-column: 1 / span 6;
+    grid-row: 1 / span 2;
+}
+
+.sandboxes-wrapper > *:nth-child(2) {
+    grid-column: 8 / span 5;
+    grid-row: 2 / span 2;
+}
+
+.sandboxes-wrapper > *:nth-child(3) {
+    grid-column: 2 / span 4;
+    grid-row: 4 / span 2;
+}
+
+.sandboxes-wrapper > *:nth-child(4) {
+    grid-column: 7 / span 6;
+    grid-row: 6 / span 2;
+}
+
+#sandboxes .container {
+    position: relative;
+}
+
+.fixed-title {
+    position: sticky;
+    top: 50%;
+    translate: 0 -50%;
+    z-index: -1;
+}
+
+
+.card {
+    border-radius: 5%;
+    filter: brightness(.9);
+    overflow: hidden;
+    transition: 0.3s;
+    cursor: pointer;
+
+    /* &:hover {
+        box-shadow: 0 0 24px 0 var(--color-black);
+    } */
+
+}
+
+.card img {
+    display: block;
+
+    /* For cases that images are in different shapes or the parent dictate the shape of cards */
+    /* object-fit: cover;
+    width: 100%;
+    height: 100%; */
+
+    /* QUESTION: How can I switch to video on hover? */
+    &:hover {
+        filter: brightness(1.2);
+        border: 1px solid rgb(0, 0, 0 /.3);
+        transform: scale(1.05, 1.05);
+    }
+}
+
+
+/* ABOUT SECTION TYPOGRAPHY & LAYOUT*/
+
+#about h2 {
+    mix-blend-mode: overlay;
+    /* mix-blend-mode: difference; */
+    /* z-index: 100; */
+}
+
+#about h2,
+#about h3,
+#about h4,
+#about p,
+#about dl {
+    color: var(--color-white);
+}
+
+#about h3 {
+    font-weight: normal;
+    font-size: 2.5em;
+    /* padding: 0; */
+    margin: 0;
+}
+
+#about h4 {
+    /* border: 2px solid red; */
+    font-weight: 600;
+    margin: 0;
+    
+}
+
+#about .textwrapper {
+    margin-bottom: 2em;
+}
+
+#about p {
+    margin: .5em 0 0 0;
+}
+
+#about dl {
+    margin: .5em 0 2.5em 0;
+}
+
+#about dt {
+    margin: .5em 0 0 0; 
+}
+
+#about dd {
+    margin: 0 0 .25em 0; 
+    padding: 0 0 0 .75em;
+    font-weight: 200;   
+}
+
+#about a {
+    color: var(--color-a);
+
+    &:hover {
+        color: var(--color-a-hover);
+    }
+}
+
+#about .two-thirds h2 {
+    text-align: left;
+    margin: 0 var(--unit-small) 0;
+    padding: 0;
+}
+
+#about .one-third p {
+    /* font-size: 1.5em; */
+        /* line-height: 1.3; */
+    /* letter-spacing: 0px; */
+    margin-bottom: 1em;
+}
+
+/* CUSTOM STYLING FOR SUBPAGES */
+.casestudy {
+    background-color: var(--color-body-bg);
+    padding-top: calc(var(--unit-small) / 2);
+    padding-bottom: 50svh;
+
+    /* QUESTION: how can I add filter background drop to hero? */
+    /* background-color: transparent; */
+    /* -webkit-backdrop-filter: blur(5px); */
+    /* backdrop-filter: blur(5px); */
+}
+
+.casestudy .row {
+    margin: calc(var(--unit-large) / 2) 0 calc(var(--unit-large) * 2) 0;
+}
+
+.casestudy .container:has(.video-wrapper) {
+    padding-bottom: var(--unit-large);
+}
+
+.casestudy .frame {
+    margin: 0;
+    padding: 3svh;
+}
+
+.h2-wrapper {
+    height: 20svh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: var(--unit-medium);
+    text-align: center;
+    color: var(--my-black);
+    animation-name: fadein-up;
+    animation-duration: 2s;
+    mix-blend-mode: difference;
+    z-index: 30;
+    position: relative;
+}
+
+.hero-sub h2 {
+    text-transform: uppercase;
+    font-family: var(--font-serif-bold);
+    font-weight: normal;
+    font-feature-settings: "dlig" 1;
+    font-size: 3.75em;
+    line-height: 1;
+}
+
+@media ( max-width: 767px ) {
+    .h2-wrapper {
+        width: 100%;
+        height: 85vh;
+        padding: 24em 4em;
+    }
+}
+
+.casestudy h2, h5 {
+    text-transform: uppercase;
+    margin: 0;
+}
+
+.casestudy h2, h3 {
+    font-feature-settings: "dlig" 1;
+}
+
+.casestudy h3 {
+    font-family: var(--font-serif-regularitalic);
+}
+
+.casestudy h4 {
+    font-size: 1em;
+    margin: 0;
+
+    /* baseline with h2(2em) */
+    padding: 1em 0 0 0;
+}
+
+.container-img {
+    /* border: 2px solid red; */
+    display: grid;
+    place-items: center;
+    width: 100wv;
+    padding: 0;
+    margin: 4em 0;
+}
+
+.container-img img {
+    width: 100%;
+}
+
+.inspo-source {
+    padding: 0 1em;
+}
+
+figure {
+    padding: 4em 0 0 0;
+    margin: 0;
+}
+
+.video-wrapper {
+    overflow: hidden;
+}
+
+.video-wrapper video {
+    border-radius: 8px;
+    max-width: 100%;
+}
+
+.button-wrapper {
+    margin: 6em 0 1em 0;
+    display: grid;
+    place-items: center;
+}
+
+/* QUESTION: why is the border radius unvisible? */
+.img-wrapper {
+    /* margin: 2em 0; */
+    border-radius: 8px;
+    max-width: 100%;
+    margin: .5em 0;
+}
+
+.hero-sub {
+    margin: 0;
+    padding: 0;
+    min-height: 100svh;
+}
+
+/* ANIMATION FOR HERO */
+.site-main:has(.casestudy.observe-me[data-viewstate = 'active']) .fixed-hero {
+    /* border: 2px solid green; */
+    top: 0;
+    scale: 105%;
+    rotate: 1deg;
+    z-index: -10;
+}
+
+.site-main:has(.hero-sub.observe-me[data-viewstate = 'inactive']) .fixed-hero {
+    visibility: hidden;
+}
+
+.fixed-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70vh;
+    width: auto;
+    background-size: 100%;
+    background-position: center;
+
+    transition: all 1s ease-out;
+    position: fixed;
+
+    top: 30vh;
+}
+
+.project-metadata {
+    font-size: 0.75em;   /* 12px */
+    line-height: 1.8;
+    list-style: none;
+    padding-left: 0.25em;
+}
+
+.case-study .one-half ul,
+.case-study .one-third ul {
+    font-size: 0.75em;   /* 12px */
+    font-weight: 200;
+    margin: 1em 0;
+    padding-left: 1em;
+    max-width: 38em;
+    list-style-position: outside;
+}
+
+
+
+/* FOR DEV PURPOSES ONLY */
+/*  Small (Mobile) Screen => ( max-width: 768px )
+    Midsize (Tablet) Screen =>  ( min-width: 768px )
+    Large (Notebook) Screen => ( min-width: 1050px ) 
+    Extra Large (Desktop) Screen 1250px + => ( min-width: 1250px)
+*/
+
+/* FOR DEV TESTING PURPOSES ONLY: light */
+/* body *, *:before, *:after {
+    background-color: rgba(0,0,0,.05) !important;
+    background-image: none !important;
+    border: 1px solid rgba(0,0,0,.1) !important;
+    color: rgba(0,0,0,.5) !important;
+}
+
+img, svg, canvas, video, iframe {
+    filter: grayscale(100%) brightness(0%) opacity(5%) !important;
+    background-color: rgba(0,0,0,.05) !important;
+    background-image: none !important;
+} */
+
+
+/* FOR DEV TESTING PURPOSES ONLY: dark */
+/* body *, *:before, *:after {
+    background-color: rgba(255,255,255,.05) !important;
+    background-image: none !important;
+    border: 1px solid rgba(0,0,0,.1) !important;
+    color: rgba(0,0,0,.5) !important;
+}
+
+img, svg, canvas, video, iframe {
+    filter: grayscale(100%) brightness(0%) opacity(5%) !important;
+    background-color: rgba(0,0,0,.05) !important;
+    background-image: none !important;
+} */
