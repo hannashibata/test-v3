@@ -108,13 +108,21 @@ CSS TABLE OF CONTENTS
     --color-white85: rgb(245 245 238 / .85);
     --color-yellow: rgb(255 238 0 /1);
     --color-blue: rgb(0 17 255 /1);
-    /* blue:#0011ff yellow:#FFEE00; */
+    /* white: #F5F5EE
+     * black: #191919
+     * yellow: #FFEE00 / oklch(0.93 0.2269 104.32)
+     * blue: #0011ff 
+     */
 
 
     /* Dark mode */
     --color-body-bg: rgb(25 25 25 / 1);
     --color-a: rgb(255 255 255 / 1);
     --color-a-hover: var(--color-yellow);
+
+    --color-a-alt: rgb(0 0 0 /1);
+    --color-a-alt-hover: var(--color-blue);
+    
     --color-siteheader-a: var(--color-white);
     --color-siteheader-a-hover: var(--color-yellow);
     --color-footer-bg: var(--color-white);
@@ -149,7 +157,7 @@ CSS TABLE OF CONTENTS
     --font-serif-regularitalic: 'ppeditorial-old-italic', 'Georgia', serif;
     --font-serif-thin: 'ppeditorial-old-thin', 'Georgia', serif;
     --font-serif-thinitalic: 'ppeditorial-old-thinitalic', 'Georgia', serif;
-    --font-body: "Karla", system-ui, "Helvetica", "Arial";
+    --font-sansserif: "Karla", system-ui, "Helvetica", "Arial";
 
     /* SIZING UNITS */
     /* --container-width: 1200px; */
@@ -201,7 +209,7 @@ a {
 body {
 
     /* SET THE FONT FOR ALL MAIN BODY TEXT */
-    /* font-family: var(--font-body); */
+    /* font-family: var(--font-sansserif); */
 
     /* SET THE LEADING (LINE-HEIGHT) FOR ALL BODY TEXT */
     line-height: 1.4;
@@ -236,7 +244,7 @@ h3 {
 h4 {
     font-size: 1.25em;
     line-height: 1.2;
-    font-family: var(--font-body);
+    font-family: var(--font-sansserif);
     font-weight: 600;
     text-transform: uppercase;
 }
@@ -248,7 +256,7 @@ dl {
 }
 
 dt {
-    /* font-family: var(--font-body); */
+    /* font-family: var(--font-sansserif); */
     /* font-weight: 600; */
     font-family: var(--font-serif-regular);
     font-feature-settings: "dlig" 1;
@@ -256,7 +264,7 @@ dt {
 
 dd {
     /* border: 2px solid red; */
-    font-family: var(--font-body); 
+    font-family: var(--font-sansserif); 
     font-weight: 400;
     line-height: 1.1;
 }
@@ -290,7 +298,6 @@ figcaption {
 
 /* MAKE ALL IMAGES SHRINK ON SMALL SCREENS */
 
-/* QUESTION: is video 100%??? */
 img, video {
     max-width: 100%;
     height: auto;
@@ -302,11 +309,13 @@ img, video {
 /* GLOBAL HELPERS */
 
 /* HIDE ELEMENTS VISUALLY BUT NOT FROM SCREEN READERS AND SEARCH ENGINES */
+/* Refactor-low: add this to figcaption for videos/images if needed. */
 .hide-visually {
     position: absolute;
     top: -9999px;
     left: -9999px;
 }
+
 
 @media (max-width: 767px) {
     .hide-visually-smallonly {
@@ -325,7 +334,6 @@ img, video {
 @media (max-width: 767px) {
 
     .with-padding-top {
-        border: 2px solid red;
         padding-top: 4em;
     }
     
@@ -718,13 +726,6 @@ section {
     height: 70vh;
     z-index: 10;
 
-    .on-hover {
-        border: 2px solid red;
-        opacity: 0;
-    }
-
-    /* QUESTION: How can I display an icon on-hover???  */
-
     .social-links a:hover {
         font-family: var(--font-serif-thinitalic);
     }
@@ -769,16 +770,16 @@ section {
         font-size: 1.25em;
     }
 
-    h3 ul {
+    .social-links {
         font-family: var(--font-serif-thin);
         list-style: none;
     }
 
-    h3 ul li {
+    ul li {
         margin: .25em;
     }
 
-    a{
+    a {
         color: var(--color-footer-a);
         
         &:hover {
@@ -818,11 +819,12 @@ section {
 /* -------------------- */
 
 .a-button {
-    /* SET THE BUTTON COLORS */
-    background-color: var(--color-body-bg);
+    /* BUTTON ON DARK */
+    background-color: transparent;
     border: 2px solid var(--color-white);
     border-radius: 4px;
     color: var(--color-a);
+    text-transform: uppercase;
 
     /* ENABLE BOX MODEL STYLING */
     display: inline-block;
@@ -843,17 +845,16 @@ section {
 
     }
 
-    /* LIGHT BUTTON VARIANT */
-    /* &.light {
-        border-color: var(--color-a-light);
-        background-color: var(--color-a-light);
-        color: var(--color-a-darker);
+    /* BUTTON ON LIGHT*/
+    &.onlight {
+        border-color: var(--color-a-alt);
+        color: var(--color-a-alt);
 
         &:hover {
-            border-color: var(--color-a-lighter);
-            background-color: var(--color-a-lighter);
+            border-color: var(--color-blue);
+            color: var(--color-yellow);
         }
-    } */
+    }
 
 }
 
@@ -928,7 +929,6 @@ html {
     }
 }
 
-/* QUESTION: how can I make this scaling up more visible? */
 .observe-me.scale-up {
     scale: 0;
     transition: all 3s ease-out 0.5s;
@@ -943,12 +943,21 @@ html {
 /* -- CUSTOM STYLING -- */
 /* -------------------- */
 
-/* CUSTOM STYLING FOR HOME */
+/* CUSTOM STYLING FOR FRAME = YELLOW BOX */
 
 .frame {
     border-radius: 32px;
     padding: 8svh 8vw;
     color: var(--color-black);
+    background-color: var(--color-yellow);
+}
+
+.frame a {
+    color: var(--color-a-alt);
+
+    &:hover {
+        color: var(--color-a-alt-hover);
+    }
 }
 
 .frame-alt {
@@ -968,8 +977,11 @@ html {
     padding: 0;
 }
 
+
+
+/* HOME */
 .hero-home .frame .eyebrow {
-    font-family: var(--font-body);
+    font-family: var(--font-sansserif);
     font-size: 1.5vw;
     line-height: 1.2;
     font-weight: 300;
@@ -1002,13 +1014,14 @@ html {
     /* margin-top: 0.9vw; */
 }
 
-.hero-home .frame a {
+/* .hero-home .frame a {
+    border: 2px solid red;
     color: var(--color-a);
 
     &:hover {
         color: var(--color-blue);
     }
-}
+} */
 
 .hero-home .frame h3 {
     margin: 0;
@@ -1020,13 +1033,14 @@ html {
     /* color: var(--color-white); */
 }
 
+/* Animation for the frame=yellow boxes */
 .load-expand {
     position: relative;
     background-color: transparent;
     border: none;
 }
 
-.load-expand::after {
+[data-viewstate = 'active'].load-expand::after {
     content: "";
     position: absolute;
     z-index: 100;
@@ -1042,43 +1056,55 @@ html {
     /* padding: 0; */
     margin-inline: auto;
     interpolate-size: allow-keywords;
-    animation: load-expand 1s ease-out forwards; 
+    /* animation: load-expand 1s ease-out forwards;  */
+    animation: load-expand 2s cubic-bezier(.74,-0.04,1,.17) forwards;
 }
 
-.load-expand > * {
+.load-expand.load-expand-alt::after {
+    background-color: transparent;
+    border: 2px solid var(--color-yellow);
+}
+
+[data-viewstate = 'active'].load-expand > * {
     opacity: 0;
     position: relative;
     z-index: 200;
-    /* display: none; */
-    /* scale: 0; */
-    animation: load-expand-content 1s ease-out forwards; 
+    /* animation: load-expand-content 1s ease-out forwards;  */
+    animation: load-expand-content 2s cubic-bezier(.74,-0.04,1,.17) forwards;
 }
+
+/* REFACTOR: make it look more cool */
 
 @keyframes load-expand {
 
     0% {
         width: 10px;
-        height: 10px;
-        /* scale: 0; */
-        border-radius: 100%;
-        /* padding: 0; */
-        /* margin-inline: auto; */
+        height: 1px;
+        border-radius: 0;
     }
 
-    20% {
-        width: 200px;
-        height: 200px;
-        /* scale: 1; */
-        border-radius: 100%;
-        /* padding: 0; */
+    25% {
+        width: 100%;
+        height: 1px;
+        border-radius: 0;
+    }
+
+    50% {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+    }
+
+    75% {
+        width: 100%;
+        height: 100%;
+        border-radius: 32px;
     }
 
     100% {
         width: 100%;
         height: 100%;
         border-radius: 32px;
-        /* padding: 0; */
-        /* margin-inline: auto; */
     }
 }
 
@@ -1089,59 +1115,80 @@ html {
     }
 
 
-    99% {
+    90% {
         opacity: 0;
+        translate: 0 5px;
     }
 
     100% {
         opacity: 1;
+        translate: 0 0;
     }
 }
 
 /* Headings for each section in home page */
 #sandboxes h2,
-#about h2 {
+#brief h2,
+.about h2 {
     /* text-transform: uppercase; */
     font-feature-settings: "dlig" 1;
     text-align: center;
     font-size: 6em;
     margin: 10vw auto;
     padding: 10vw auto;
-}
-
-#sandboxes h2 {
     z-index: -10;
 }
 
 /* Sandboxes bespoke grid */
-.sandboxes-wrapper {
+.thumbnails-wrapper {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(8, 1fr);
 }
 
 /* Sandboxes bespoke layout using the above grid */
-.sandboxes-wrapper > *:nth-child(1) {
+.thumbnails-wrapper > *:nth-child(1) {
     grid-column: 1 / span 6;
     grid-row: 1 / span 2;
 }
 
-.sandboxes-wrapper > *:nth-child(2) {
+.thumbnails-wrapper > *:nth-child(2) {
     grid-column: 8 / span 5;
     grid-row: 2 / span 2;
 }
 
-.sandboxes-wrapper > *:nth-child(3) {
+.thumbnails-wrapper > *:nth-child(3) {
     grid-column: 2 / span 4;
     grid-row: 4 / span 2;
 }
 
-.sandboxes-wrapper > *:nth-child(4) {
+.thumbnails-wrapper > *:nth-child(4) {
     grid-column: 7 / span 6;
     grid-row: 6 / span 2;
 }
 
-#sandboxes .container {
+.about-page .thumbnails-wrapper {
+    margin: calc(var(--unit-large)  * 4) 0;
+    grid-template-rows: repeat(9, auto);
+}
+
+.about-page .thumbnails-wrapper > *:nth-child(1) {
+    grid-column: 1 / span 5;
+    grid-row: 1 / span 2;
+}
+
+.about-page .thumbnails-wrapper > *:nth-child(2) {
+    grid-column: 8 / span 5;
+    grid-row: 2 / span 3;
+}
+
+.about-page .thumbnails-wrapper > *:nth-child(3) {
+    grid-column: 2 / span 5;
+    grid-row: 5 / span 2;
+}
+
+#sandboxes .container,
+.about .container {
     position: relative;
 }
 
@@ -1152,8 +1199,7 @@ html {
     z-index: -1;
 }
 
-
-.card {
+.thumbnail {
     border-radius: 5%;
     filter: brightness(.9);
     overflow: hidden;
@@ -1166,106 +1212,103 @@ html {
 
 }
 
-.card img {
+/* Placing two images/videos on top of another. */
+.thumbnail img, 
+.thumbnail video {
     display: block;
+    grid-column: 1;
+    grid-row: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 
     /* For cases that images are in different shapes or the parent dictate the shape of cards */
     /* object-fit: cover;
     width: 100%;
     height: 100%; */
+}
 
-    /* QUESTION: How can I switch to video on hover? */
-    &:hover {
-        filter: brightness(1.2);
-        border: 1px solid rgb(0, 0, 0 /.3);
-        transform: scale(1.05, 1.05);
+.thumbnail img {
+    position: relative;
+    z-index: 10;
+}
+
+.thumbnail a:has(img + video) {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+
+    &:hover img {
+        opacity: 0;
     }
 }
 
 
-/* ABOUT SECTION TYPOGRAPHY & LAYOUT*/
-
-#about h2 {
+/* BRIEF SECTION TYPOGRAPHY & LAYOUT*/
+#brief h2,
+.about h2 {
     mix-blend-mode: overlay;
     /* mix-blend-mode: difference; */
-    /* z-index: 100; */
 }
 
-#about h2,
-#about h3,
-#about h4,
-#about p,
-#about dl {
+#brief h3 {
+    font-family: var(--font-sansserif);
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+#brief p {
+    font-family: var(--font-serif-regular);
+    font-size: 2em;
+    line-height: 1.3;
+    margin: 0 0 1em 0;
+}
+
+#brief p span {
+    font-family: var(--font-serif-regularitalic);
+}
+
+/* CUSTOM STYLING FOR SUBPAGES */
+
+/* ABOUT PAGE TYPOGRAPHY & LAYOUT*/
+
+.about {
     color: var(--color-white);
 }
 
-#about h3 {
+/* Adjust the layout for the fixed h2 */
+.fixed-title.on-top {
+    top: 20%;
+}
+
+.about h3 {
     font-weight: normal;
     font-size: 2.5em;
     /* padding: 0; */
     margin: 0;
 }
 
-#about h4 {
+.about h4 {
     /* border: 2px solid red; */
     font-weight: 600;
     margin: 0;
     
 }
 
-#about .textwrapper {
-    margin-bottom: 2em;
-}
-
-#about p {
-    margin: .5em 0 0 0;
-}
-
-#about dl {
-    margin: .5em 0 2.5em 0;
-}
-
-#about dt {
+.about dt {
     margin: .5em 0 0 0; 
 }
 
-#about dd {
+.about dd {
     margin: 0 0 .25em 0; 
     padding: 0 0 0 .75em;
     font-weight: 200;   
 }
 
-#about a {
-    color: var(--color-a);
-
-    &:hover {
-        color: var(--color-a-hover);
-    }
-}
-
-#about .two-thirds h2 {
-    text-align: left;
-    margin: 0 var(--unit-small) 0;
-    padding: 0;
-}
-
-#about .one-third p {
-    /* font-size: 1.5em; */
-        /* line-height: 1.3; */
-    /* letter-spacing: 0px; */
-    margin-bottom: 1em;
-}
-
-/* CUSTOM STYLING FOR SUBPAGES */
 .casestudy {
     background-color: var(--color-body-bg);
     padding-top: calc(var(--unit-small) / 2);
-    padding-bottom: 50svh;
-
-    /* QUESTION: how can I add filter background drop to hero? */
-    /* background-color: transparent; */
-    /* -webkit-backdrop-filter: blur(5px); */
-    /* backdrop-filter: blur(5px); */
+    padding-bottom: 15svh;
 }
 
 .casestudy .row {
@@ -1294,6 +1337,13 @@ html {
     mix-blend-mode: difference;
     z-index: 30;
     position: relative;
+}
+
+/* Question: how can I override blend-mode? 
+Are there better way to show the title? */
+.no-blend {
+    /* border: 2px solid red; */
+    mix-blend-mode: normal;
 }
 
 .hero-sub h2 {
@@ -1332,6 +1382,11 @@ html {
 
     /* baseline with h2(2em) */
     padding: 1em 0 0 0;
+}
+
+.casestudy .frame h4,
+.casestudy .frame-alt h4 {
+    padding-top: .5em;
 }
 
 .container-img {
@@ -1390,7 +1445,7 @@ figure {
     /* border: 2px solid green; */
     top: 0;
     scale: 105%;
-    rotate: 1deg;
+    rotate: 10deg;
     z-index: -10;
 }
 
@@ -1403,7 +1458,9 @@ figure {
     justify-content: center;
     align-items: center;
     height: 70vh;
-    width: auto;
+
+    /* Whenever the parent is displa:flex, width is determined by children */
+    width: 100%;
     background-size: 100%;
     background-position: center;
 
@@ -1411,6 +1468,13 @@ figure {
     position: fixed;
 
     top: 30vh;
+}
+
+/* Keep the hero image and video in full-width in large screens */
+.fixed-hero video, 
+.fixed-hero img {
+    max-width: none;
+    width: 100%;
 }
 
 .project-metadata {
